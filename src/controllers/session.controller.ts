@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { omit } from "lodash";
 import log from "../logger";
 import { signJwt } from "../utils/jwt.utils";
 import config from "config";

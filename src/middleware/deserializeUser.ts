@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import log from "../logger";
 import { get } from "lodash";
 import { verifyJwt } from "../utils/jwt.utils";
 import { reIssueAccessToken } from "../services/session.service";
@@ -25,7 +24,6 @@ const deserializeUser = async (
   if (expired && refreshToken) {
     // reissue access token
     const newAccessToken = await reIssueAccessToken({ refreshToken });
-    log.info(newAccessToken);
     if (newAccessToken) {
       res.setHeader("x-access-token", newAccessToken);
     }

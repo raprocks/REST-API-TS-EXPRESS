@@ -16,30 +16,17 @@ export default function (app: Express) {
     (req: Request, res: Response) => {
       return res.sendStatus(200);
     },
-    // Register
-    // POST /api/user
     app.post(
       "/api/users",
       validateRequest(createdUserSchema),
       createUserHandler
     ),
-
-    // Login
-    // POST /api/sessions
     app.post(
       "/api/sessions",
       validateRequest(createdSessionSchema),
       createUserSessionHandler
     ),
-
-    // Getuser session
-    // GET /api/sessions
     app.get("/api/sessions", requireUser, getUserSessionHandler),
-
-    // Logout
-    // DELETE /api/session
     app.delete("/api/sessions", requireUser, deleteSessionHandler)
-
-    // GET /api/posts /api/posts/postid
   );
 }

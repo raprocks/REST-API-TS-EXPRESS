@@ -9,6 +9,5 @@ export const createdSessionSchema = object({
     email: string({
       required_error: `Email is required`,
     }).email("Must be a valid email"),
-    // .required("Email is required"),
   }),
 });
