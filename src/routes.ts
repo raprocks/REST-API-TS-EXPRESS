@@ -23,6 +23,9 @@ import { createdSessionSchema } from "./schemas/session.schema";
 import { createdUserSchema } from "./schemas/user.schema";
 
 export default function (app: Express) {
+  app.get("/", (req: Request, res: Response<{ status: string }>) => {
+    res.json({ status: "OK" });
+  });
   app.get("/healthcheck", (req: Request, res: Response) => {
     return res.sendStatus(200);
   });
