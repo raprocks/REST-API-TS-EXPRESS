@@ -1,7 +1,6 @@
 import logger from "pino";
-import path from "path";
 
-const log = logger({
+const pino_logger = logger({
   // prettyPrint: true,
   transport: {
     target: "pino-pretty",
@@ -17,6 +16,6 @@ const log = logger({
     pid: false,
   },
   // timestamp: () => `,"time":${dayjs().format()}`,
-}).child({ filename: path.relative("./", __filename) });
+});
 
-export default log;
+export default pino_logger;

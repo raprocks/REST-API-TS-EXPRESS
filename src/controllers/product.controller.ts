@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
-import log from "../logger";
+import path from "path";
+import logger from "../logger";
 import {
   CreateProductInput,
   DeleteProductInput,
   ReadProductInput,
   UpdateProductInput,
 } from "../schemas/product.schema";
-
+const log = logger.child({ filename: path.relative("./", __filename) })
 import {
   createProduct,
   deleteProduct,

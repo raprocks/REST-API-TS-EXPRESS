@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import log from "../logger";
+import logger from "../logger";
 import { signJwt } from "../utils/jwt.utils";
 import config from "config";
 // import {} from "../schemas/session.schema";
@@ -9,6 +9,8 @@ import {
   updateSession,
 } from "../services/session.service";
 import { validatePassword } from "../services/user.service";
+import path from "path";
+const log = logger.child({ filename: path.relative("./", __filename) })
 
 export async function createUserSessionHandler(req: Request, res: Response) {
   // validate password

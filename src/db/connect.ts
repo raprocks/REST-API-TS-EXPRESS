@@ -1,10 +1,12 @@
-import { connect as dbconnect, ConnectOptions } from "mongoose";
+import { connect as dbconnect } from "mongoose";
 import config from "config";
-import log from "../logger";
+import logger from "../logger";
+import path from "path";
+
+const log = logger.child({ filename: path.relative("./", __filename) })
 
 const connect = async () => {
   const dbURI = config.get<string>("dbURI");
-
   try {
     await dbconnect(dbURI);
     log.info("Database Connected!");

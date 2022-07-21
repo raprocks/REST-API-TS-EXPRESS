@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { omit } from "lodash";
-import log from "../logger";
+import path from "path";
+import logger from "../logger";
 import { CreateUserInput } from "../schemas/user.schema";
 import { createUser } from "../services/user.service";
-
+const log = logger.child({ filename: path.relative("./", __filename) })
 export async function createUserHandler(
   req: Request<{}, {}, CreateUserInput["body"]>,
   res: Response

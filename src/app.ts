@@ -2,9 +2,11 @@ import express from "express";
 import config from "config";
 import connect from "./db/connect";
 import routes from "./routes";
-import log from "./logger";
+import logger from "./logger";
 import deserializeUser from "./middleware/deserializeUser";
+import path from "path";
 
+const log = logger.child({ filename: path.relative("./", __filename) })
 const PORT = config.get<number>("PORT");
 const HOST = config.get<string>("HOST");
 

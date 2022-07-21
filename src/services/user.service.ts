@@ -1,6 +1,9 @@
 import { DocumentDefinition, FilterQuery } from "mongoose";
-import log from "../logger";
+import path from "path";
+import logger from "../logger";
 import UserModel, { UserDocument } from "../models/user.model";
+
+const log = logger.child({ filename: path.relative("./", __filename) })
 
 export async function createUser(
   input: DocumentDefinition<
